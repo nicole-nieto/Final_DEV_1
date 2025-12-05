@@ -1,16 +1,8 @@
+from pydantic import BaseModel
+from typing import List
+from utils.positions import Position
+from utils.states import States
 
-
-class Jugador(BaseModel):
-    nombre: str
-    fecha_nacimiento: int
-    numero_camiseta: int
-    nacionalidad:int 
-    altura: int
-    peso:int
-    pie_dominante:str
-    posicion: Position
-    estado: States = States.ACTIVO 
-    estadistica: Estadistica = Estadistica() 
 
 class Estadistica(BaseModel):
     goles_marcados: int = 0
@@ -20,11 +12,24 @@ class Estadistica(BaseModel):
     tarjetas_rojas: int = 0
 
 
+class Jugador(BaseModel):
+    nombre: str
+    fecha_nacimiento: int
+    numero_camiseta: int
+    nacionalidad: int
+    altura: int
+    peso: int
+    pie_dominante: str
+    posicion: Position
+    estado: States = States.ACTIVO
+    estadistica: Estadistica = Estadistica()
+
+
 class Partido(BaseModel):
     rival: str
-    fecha: str 
+    fecha: str
     resultado_local: int
     resultado_visitante: int
-    goles_local: List[str] = [] 
-    goles_visitante: List[str] = [] 
+    goles_local: List[str] = []
+    goles_visitante: List[str] = []
 
