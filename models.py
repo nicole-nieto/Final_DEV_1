@@ -1,8 +1,16 @@
 
 
-class Jugador():
-    pass
-
+class Jugador(BaseModel):
+    nombre: str
+    fecha_nacimiento: int
+    numero_camiseta: int
+    nacionalidad:int 
+    altura: int
+    peso:int
+    pie_dominante:str
+    posicion: Position
+    estado: States = States.ACTIVO 
+    estadistica: Estadistica = Estadistica() 
 
 class Estadistica(BaseModel):
     goles_marcados: int = 0
